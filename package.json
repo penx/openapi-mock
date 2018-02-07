@@ -1,7 +1,6 @@
 {
   "name": "openapi-mock",
   "version": "0.0.1",
-  "private": true,
   "description": "New Swagger API Project",
   "keywords": [],
   "author": "Alasdair McLeay",
