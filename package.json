@@ -1,0 +1,28 @@
+{
+  "name": "openapi-mock",
+  "version": "0.0.1",
+  "private": true,
+  "description": "New Swagger API Project",
+  "keywords": [],
+  "author": "Alasdair McLeay",
+  "license": "ISC",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.16.2",
+    "swagger-express-mw": "^0.7.0"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "debug": "DEBUG=* node --inspect app.js",
+    "break": "DEBUG=* node --inspect-brk app.js"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/penx/openapi-mock.git"
+  },
+  "bugs": {
+    "url": "https://github.com/penx/openapi-mock/issues"
+  },
+  "homepage": "https://github.com/penx/openapi-mock#readme"
+}
