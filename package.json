@@ -1,19 +1,23 @@
 {
   "name": "openapi-mock",
   "version": "0.0.1",
-  "description": "New Swagger API Project",
+  "description": "Create a mock server from an OpenAPI/Swagger file",
   "keywords": [],
   "author": "Alasdair McLeay",
   "license": "ISC",
   "main": "app.js",
   "dependencies": {
     "express": "^4.16.2",
-    "swagger-express-mw": "^0.7.0"
+    "swagger-express-mw": "^0.7.0",
+    "yargs": "^11.0.0"
   },
   "scripts": {
     "start": "node app.js",
     "debug": "DEBUG=* node --inspect app.js",
     "break": "DEBUG=* node --inspect-brk app.js"
+  },
+  "bin": {
+    "openapi-mock": "./app.js"
   },
   "devDependencies": {},
   "repository": {
