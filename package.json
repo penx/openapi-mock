@@ -7,9 +7,9 @@
   "license": "ISC",
   "main": "app.js",
   "dependencies": {
+    "commander": "^2.14.1",
     "express": "^4.16.2",
-    "swagger-express-mw": "^0.7.0",
-    "yargs": "^11.0.0"
+    "swagger-express-mw": "^0.7.0"
   },
   "scripts": {
     "start": "node app.js",
@@ -17,7 +17,7 @@
     "break": "DEBUG=* node --inspect-brk app.js"
   },
   "bin": {
-    "openapi-mock": "./app.js"
+    "openapi-mock": "./cli.js"
   },
   "devDependencies": {},
   "repository": {
