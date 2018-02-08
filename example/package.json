@@ -1,0 +1,24 @@
+{
+  "name": "openapi-mock-example",
+  "version": "0.0.1",
+  "description": "New Swagger API Project",
+  "keywords": [],
+  "author": "Alasdair McLeay",
+  "license": "ISC",
+  "main": "app.js",
+  "dependencies": {
+    "openapi-mock": "0.0.1"
+  },
+  "scripts": {
+    "start": "openapi-mock -m ./mocks -s ./spec/petstore.json"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/penx/openapi-mock.git"
+  },
+  "bugs": {
+    "url": "https://github.com/penx/openapi-mock/issues"
+  },
+  "homepage": "https://github.com/penx/openapi-mock#readme"
+}
