@@ -9,7 +9,7 @@
   "dependencies": {
     "commander": "^2.14.1",
     "express": "^4.16.2",
-    "swagger-express-mw": "^0.7.0"
+    "@penx/swagger-node-runner": "^0.7.3"
   },
   "scripts": {
     "start": "node app.js",
