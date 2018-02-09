@@ -10,7 +10,7 @@
     "openapi-mock": "0.0.1"
   },
   "scripts": {
-    "start": "openapi-mock -m ./mocks -s ./spec/petstore.json"
+    "start": "openapi-mock -m ./mocks -p 9092 ./spec/petstore.json"
   },
   "devDependencies": {},
   "repository": {
