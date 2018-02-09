@@ -4,16 +4,27 @@
 var Runner = require('@penx/swagger-node-runner');
 var app = require('express')();
 var path = require('path');
+var chalk = require('chalk');
 
 module.exports = app; // for testing
+
+function logPath(name, path) {
+  const required = path.parameters ? path.parameters.filter(parameter => parameter.required).map(parameter => parameter.name) : [];
+  console.log(chalk.green(name), Object.keys(path).filter(key => key !== 'parameters'), required.length ? `required: ${required}` : '');
+}
+
+function logPaths(paths) {
+  Object.keys(paths).forEach((key) => {
+    logPath(key, paths[key]);
+  });
+}
 
 function registerApp(runner, port) {
   const swaggerExpress = runner.expressMiddleware();
   swaggerExpress.register(app);
   app.listen(port);
-  console.log('Paths:')
-  console.log(Object.keys(swaggerExpress.runner.swagger.paths));
-  console.log('Server running at http://127.0.0.1:' + port);
+  logPaths(swaggerExpress.runner.swagger.paths);
+  console.log(`Mock API running at http://127.0.0.1:${port}/${swaggerExpress.runner.swagger.info.version}`);
 };
 
 function createApp({

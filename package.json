@@ -7,9 +7,10 @@
   "license": "ISC",
   "main": "app.js",
   "dependencies": {
+    "@penx/swagger-node-runner": "^0.7.3",
+    "chalk": "^2.3.0",
     "commander": "^2.14.1",
-    "express": "^4.16.2",
-    "@penx/swagger-node-runner": "^0.7.3"
+    "express": "^4.16.2"
   },
   "scripts": {
     "start": "node app.js",
