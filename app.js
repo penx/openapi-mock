@@ -1,7 +1,7 @@
 'use strict';
 
 // Patched version of swagger-node-runner waiting on https://github.com/theganyo/swagger-node-runner/pull/119
-var Runner = require('@penx/swagger-node-runner');
+var Runner = require('swagger-node-runner');
 var app = require('express')();
 var path = require('path');
 var chalk = require('chalk');
