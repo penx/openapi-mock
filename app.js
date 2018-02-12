@@ -24,7 +24,7 @@ function registerApp(runner, port) {
   swaggerExpress.register(app);
   app.listen(port);
   logPaths(swaggerExpress.runner.swagger.paths);
-  console.log(`Mock API running at http://127.0.0.1:${port}/${swaggerExpress.runner.swagger.info.version}`);
+  console.log(`Mock API running at http://127.0.0.1:${port}/${swaggerExpress.runner.swagger.basePath || ''}`);
 };
 
 function createApp({
