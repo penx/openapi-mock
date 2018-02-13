@@ -16,7 +16,7 @@
     "chalk": "^2.3.0",
     "commander": "^2.14.1",
     "express": "^4.16.2",
-    "swagger-node-runner": "penx/swagger-node-runner#feature/support-date-in-mocks"
+    "swagger-node-runner": "penx/swagger-node-runner#openapi-mock"
   },
   "bin": {
     "openapi-mock": "./cli.js"
