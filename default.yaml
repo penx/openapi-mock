@@ -10,8 +10,11 @@ swagger:
     _swagger_validate:
       name: swagger_validator
       validateResponse: true
+    _json_error_handler:
+      name: json_error_handler
+      handle500Errors: true
     swagger_controllers:
-      - onError: json_error_handler
+      - onError: _json_error_handler
       - cors
       - swagger_params_parser
       - swagger_security
