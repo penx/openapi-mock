@@ -1,6 +1,6 @@
 {
   "name": "openapi-mock",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Create a mock server from an OpenAPI/Swagger file",
   "keywords": [
     "openapi",
