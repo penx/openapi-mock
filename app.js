@@ -24,7 +24,7 @@ function registerApp(runner, port) {
   swaggerExpress.register(app);
   app.listen(port);
   logPaths(swaggerExpress.runner.swagger.paths);
-  console.log(`Mock API running at http://127.0.0.1:${port}/${swaggerExpress.runner.swagger.basePath || ''}`);
+  console.log(`Mock API running at http://127.0.0.1:${port}${swaggerExpress.runner.swagger.basePath || ''}`);
 };
 
 function createApp({
@@ -32,12 +32,15 @@ function createApp({
   mock,
   config = path.join(__dirname, '.'),
   port = process.env.PORT || 10010} = {}) {
-  // If spec not defined, load example
-  // If config not defined, load default
   var config = {
     configDir: config,
     swaggerFile: spec,
-    appRoot: __dirname
+    appRoot: __dirname,
+    bagpipes: {
+      _router: {
+        mockControllersDirs: [mock]
+      }
+    }
   };
 
   Runner.create(config, function(err, runner) {
