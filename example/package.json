@@ -1,13 +1,13 @@
 {
   "name": "openapi-mock-example",
-  "version": "0.0.1",
+  "version": "0.0.7",
   "description": "New Swagger API Project",
   "keywords": [],
   "author": "Alasdair McLeay",
   "license": "ISC",
   "main": "app.js",
   "dependencies": {
-    "openapi-mock": "0.0.1"
+    "openapi-mock": "0.0.7"
   },
   "scripts": {
     "start": "openapi-mock -m ./mocks -p 9092 ./spec/petstore.json",
