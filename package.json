@@ -12,6 +12,10 @@
   "author": "Alasdair McLeay",
   "license": "ISC",
   "main": "app.js",
+  "scripts": {
+    "test": "node app.test.js",
+    "test:break": "node --inspect-brk app.test.js"
+  },
   "dependencies": {
     "chalk": "^2.3.0",
     "commander": "^2.14.1",
@@ -21,7 +25,9 @@
   "bin": {
     "openapi-mock": "./cli.js"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "supertest": "^3.1.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/penx/openapi-mock.git"
