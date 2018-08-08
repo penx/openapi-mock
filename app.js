@@ -28,7 +28,7 @@ function registerApp(runner, port) {
 };
 
 function createApp({
-  spec = path.join(__dirname, './example/spec/petstore.json'),
+  spec = path.join(__dirname, './example/spec/petstore.no-key.json'),
   mock,
   config = path.join(__dirname, '.'),
   port = process.env.PORT || 10010} = {}) {
