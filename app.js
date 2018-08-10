@@ -45,10 +45,7 @@ async function createApp({
   const runner = await createRunner(runnerConfig);
   const server = createServer(app, runner, port);
 
-  return {
-    app,
-    server
-  };
+  return server;
 }
 
 module.exports = createApp

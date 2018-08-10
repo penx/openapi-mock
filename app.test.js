@@ -6,13 +6,10 @@ const assert = require('assert');
 
 describe('app', () => {
   let app;
-  let server;
   before(async() => {
-    let wrap = await initapp({
+    app = await initapp({
       mock: './example/mocks'
     });
-    app = wrap.app;
-    server = wrap.server;
     return new Promise((resolve) => {
       setTimeout(() => {
         a = 1;
@@ -21,7 +18,7 @@ describe('app', () => {
     });
   });
 
-  after(() => {server.close()});
+  after(() => {app.close()});
 
   it('should return Content-Type=json for a valid api request', done => {
     request(app)
