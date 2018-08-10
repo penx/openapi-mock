@@ -2,11 +2,9 @@
 
 // Patched version of swagger-node-runner waiting on https://github.com/theganyo/swagger-node-runner/pull/119
 var Runner = require('@openapi-mock/swagger-node-runner');
-var app = require('express')();
+var express = require('express');
 var path = require('path');
 var chalk = require('chalk');
-
-module.exports = app; // for testing
 
 function logPath(name, path) {
   const required = path.parameters ? path.parameters.filter(parameter => parameter.required).map(parameter => parameter.name) : [];
@@ -19,12 +17,13 @@ function logPaths(paths) {
   });
 }
 
-function registerApp(runner, port) {
+function registerApp(app, runner, port) {
   const swaggerExpress = runner.expressMiddleware();
   swaggerExpress.register(app);
   app.listen(port);
   logPaths(swaggerExpress.runner.swagger.paths);
   console.log(`Mock API running at http://127.0.0.1:${port}${swaggerExpress.runner.swagger.basePath || ''}`);
+  return app;
 };
 
 function createApp({
@@ -43,9 +42,11 @@ function createApp({
     }
   };
 
+  const app = express();
+
   Runner.create(config, function(err, runner) {
     if (err) { throw err; }
-    registerApp(runner, port);
+    registerApp(app, runner, port);
   });
 
   return app;

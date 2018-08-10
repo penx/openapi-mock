@@ -13,7 +13,7 @@
   "license": "ISC",
   "main": "app.js",
   "scripts": {
-    "test": "node app.test.js",
+    "test": "mocha --recursive \"./*.test.js\"",
     "test:break": "node --inspect-brk app.test.js"
   },
   "dependencies": {
@@ -26,6 +26,7 @@
     "openapi-mock": "./cli.js"
   },
   "devDependencies": {
+    "mocha": "^5.2.0",
     "supertest": "^3.1.0"
   },
   "repository": {
