@@ -4,19 +4,6 @@ const express = require('express');
 const initapp = require('./app');
 const assert = require('assert');
 
-// const test = () => {
-//   request(app)
-//     .get('/v2/store/order/1')
-//     .expect('Content-Type', /json/)
-//     .expect('Content-Length', '2')
-//     .expect(200, {})
-//     .end(function(err, res) {
-//       if (err) throw err;
-//     });
-// };
-//
-// setTimeout(test, 1000);
-
 describe('app', () => {
   let app;
   let server;
@@ -51,6 +38,7 @@ describe('app', () => {
     request(app)
       .get('/v2/pet/1')
       .expect(res => {
+        // TODO: full spec check
         assert.ok(res.body.name.length > 0)
       })
       .expect(200, done)

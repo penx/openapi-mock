@@ -17,7 +17,16 @@ function logPaths(paths) {
   });
 }
 
-function registerApp(app, runner, port) {
+function createRunner(config) {
+  return new Promise(resolve => {
+    Runner.create(config, function(err, runner) {
+      if (err) { throw err; }
+      resolve(runner);
+    });
+  });
+}
+
+function createServer(app, runner, port) {
   const swaggerExpress = runner.expressMiddleware();
   swaggerExpress.register(app);
   const server = app.listen(port);
@@ -25,16 +34,6 @@ function registerApp(app, runner, port) {
   console.log(`Mock API running at http://127.0.0.1:${port}${swaggerExpress.runner.swagger.basePath || ''}`);
   return server;
 };
-
-function createRunner(config, app, port) {
-  return new Promise(resolve => {
-    Runner.create(config, function(err, runner) {
-      if (err) { throw err; }
-      const server = registerApp(app, runner, port);
-      resolve(server);
-    });
-  });
-}
 
 async function createApp({
   spec = path.join(__dirname, './example/spec/petstore.no-key.json'),
@@ -53,7 +52,9 @@ async function createApp({
   };
 
   const app = express();
-  let server = await createRunner(config, app, port);
+  const runner = await createRunner(config);
+  const server = createServer(app, runner, port);
+  resolve(server);
 
   return {
     app,
