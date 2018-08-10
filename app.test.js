@@ -1,3 +1,4 @@
+// These are mainly integration tests as openapi-mock mainly exists as an integration of external tools
 const request = require('supertest');
 const express = require('express');
 const initapp = require('./app');
@@ -18,10 +19,13 @@ const assert = require('assert');
 
 describe('app', () => {
   let app;
-  before(() => {
-    app = initapp({
+  let server;
+  before(async() => {
+    let wrap = await initapp({
       mock: './example/mocks'
     });
+    app = wrap.app;
+    server = wrap.server;
     return new Promise((resolve) => {
       setTimeout(() => {
         a = 1;
@@ -30,7 +34,7 @@ describe('app', () => {
     });
   });
 
-  after(() => app.close());
+  after(() => {server.close()});
 
   it('should return Content-Type=json for a valid api request', done => {
     request(app)

@@ -20,13 +20,23 @@ function logPaths(paths) {
 function registerApp(app, runner, port) {
   const swaggerExpress = runner.expressMiddleware();
   swaggerExpress.register(app);
-  app.listen(port);
+  const server = app.listen(port);
   logPaths(swaggerExpress.runner.swagger.paths);
   console.log(`Mock API running at http://127.0.0.1:${port}${swaggerExpress.runner.swagger.basePath || ''}`);
-  return app;
+  return server;
 };
 
-function createApp({
+function createRunner(config, app, port) {
+  return new Promise(resolve => {
+    Runner.create(config, function(err, runner) {
+      if (err) { throw err; }
+      const server = registerApp(app, runner, port);
+      resolve(server);
+    });
+  });
+}
+
+async function createApp({
   spec = path.join(__dirname, './example/spec/petstore.no-key.json'),
   mock,
   config = path.join(__dirname, '.'),
@@ -43,13 +53,12 @@ function createApp({
   };
 
   const app = express();
+  let server = await createRunner(config, app, port);
 
-  Runner.create(config, function(err, runner) {
-    if (err) { throw err; }
-    registerApp(app, runner, port);
-  });
-
-  return app;
+  return {
+    app,
+    server
+  };
 }
 
 module.exports = createApp
