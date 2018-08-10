@@ -10,12 +10,6 @@ describe('app', () => {
     app = await initapp({
       mock: './example/mocks'
     });
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        a = 1;
-        resolve();
-      }, 1000);
-    });
   });
 
   after(() => {app.close()});
