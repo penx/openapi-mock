@@ -1,21 +1,11 @@
 'use strict';
 
 // Patched version of swagger-node-runner waiting on https://github.com/theganyo/swagger-node-runner/pull/119
-var Runner = require('@openapi-mock/swagger-node-runner');
-var express = require('express');
-var path = require('path');
-var chalk = require('chalk');
+const Runner = require('@openapi-mock/swagger-node-runner');
+const express = require('express');
+const path = require('path');
 
-function logPath(name, path) {
-  const required = path.parameters ? path.parameters.filter(parameter => parameter.required).map(parameter => parameter.name) : [];
-  console.log(chalk.green(name), Object.keys(path).filter(key => key !== 'parameters'), required.length ? `required: ${required}` : '');
-}
-
-function logPaths(paths) {
-  Object.keys(paths).forEach((key) => {
-    logPath(key, paths[key]);
-  });
-}
+const logPaths = require('./lib/logPaths');
 
 function createRunner(config) {
   return new Promise(resolve => {
@@ -40,7 +30,7 @@ async function createApp({
   mock,
   config = path.join(__dirname, '.'),
   port = process.env.PORT || 10010} = {}) {
-  var config = {
+  const runnerConfig = {
     configDir: config,
     swaggerFile: spec,
     appRoot: __dirname,
@@ -52,9 +42,8 @@ async function createApp({
   };
 
   const app = express();
-  const runner = await createRunner(config);
+  const runner = await createRunner(runnerConfig);
   const server = createServer(app, runner, port);
-  resolve(server);
 
   return {
     app,
