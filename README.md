@@ -1,5 +1,7 @@
 # OpenAPI Mock
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/penx/openapi-mock.svg)](https://greenkeeper.io/)
+
 CLI utility to start a mock server based upon a Swagger/OpenAPI JSON or YAML spec file.
 
 Uses [swagger-node-runner](https://github.com/theganyo/swagger-node-runner) and [sway](https://github.com/apigee-127/sway).
