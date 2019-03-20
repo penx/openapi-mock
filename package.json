@@ -26,8 +26,8 @@
     "openapi-mock": "./cli.js"
   },
   "devDependencies": {
-    "mocha": "^5.2.0",
-    "supertest": "^3.1.0"
+    "mocha": "^6.0.2",
+    "supertest": "^4.0.2"
   },
   "repository": {
     "type": "git",
