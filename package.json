@@ -14,13 +14,16 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha --recursive \"./*.test.js\"",
-    "test:break": "node --inspect-brk app.test.js"
+    "test:break": "node --inspect-brk app.test.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "chalk": "^2.3.0",
     "commander": "^2.14.1",
     "express": "^4.16.2",
-    "@openapi-mock/swagger-node-runner": "0.0.2"
+    "@openapi-mock/swagger-node-runner": "0.0.2",
+    "snyk": "^1.316.1"
   },
   "bin": {
     "openapi-mock": "./cli.js"
@@ -36,5 +39,6 @@
   "bugs": {
     "url": "https://github.com/penx/openapi-mock/issues"
   },
-  "homepage": "https://github.com/penx/openapi-mock#readme"
+  "homepage": "https://github.com/penx/openapi-mock#readme",
+  "snyk": true
 }
