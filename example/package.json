@@ -7,12 +7,15 @@
   "license": "ISC",
   "main": "app.js",
   "dependencies": {
-    "openapi-mock": "0.0.7"
+    "openapi-mock": "0.0.7",
+    "snyk": "^1.316.1"
   },
   "scripts": {
     "start": "openapi-mock -m ./mocks -p 9092 ./spec/petstore.no-key.json",
     "debug": "DEBUG=* node --inspect ./node_modules/.bin/openapi-mock -p 9092 -m ./mocks ./spec/petstore.no-key.json",
-    "break": "DEBUG=* node --inspect-brk ./node_modules/.bin/openapi-mock -p 9092 -m ./mocks ./spec/petstore.no-key.json"
+    "break": "DEBUG=* node --inspect-brk ./node_modules/.bin/openapi-mock -p 9092 -m ./mocks ./spec/petstore.no-key.json",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "devDependencies": {},
   "repository": {
@@ -22,5 +25,6 @@
   "bugs": {
     "url": "https://github.com/penx/openapi-mock/issues"
   },
-  "homepage": "https://github.com/penx/openapi-mock#readme"
+  "homepage": "https://github.com/penx/openapi-mock#readme",
+  "snyk": true
 }
