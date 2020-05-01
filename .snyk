@@ -1,0 +1,12 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.14.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-567746:
+    - '@openapi-mock/swagger-node-runner > sway > lodash':
+        patched: '2020-05-01T03:09:46.076Z'
+    - '@openapi-mock/swagger-node-runner > sway > json-refs > lodash':
+        patched: '2020-05-01T03:09:46.076Z'
+    - '@openapi-mock/swagger-node-runner > sway > json-refs > graphlib > lodash':
+        patched: '2020-05-01T03:09:46.076Z'
